@@ -1,4 +1,4 @@
 package com.tibuhealth.Tibu.service;
 
-public class Medication {
+public class MedicationService {
 }

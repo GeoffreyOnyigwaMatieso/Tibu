@@ -1,8 +1,8 @@
 package com.tibuhealth.Tibu.repository;
 
-import org.aspectj.apache.bcel.util.Repository;
+import com.tibuhealth.Tibu.model.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface Customer extends JpaRepository<com.tibuhealth.Tibu.model.Customer,Long> {
+public interface CustomerRepository extends JpaRepository<Customer,Long> {
     //Accepts All Crud database method
 }

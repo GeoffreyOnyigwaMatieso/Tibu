@@ -1,6 +1,6 @@
 package com.tibuhealth.Tibu.controller;
 
-public class Order {
+public class OrderController {
 
 
 }

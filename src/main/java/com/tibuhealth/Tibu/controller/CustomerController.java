@@ -1,6 +1,6 @@
 package com.tibuhealth.Tibu.controller;
 
-public class Customer {
+public class CustomerController {
 
 
 }

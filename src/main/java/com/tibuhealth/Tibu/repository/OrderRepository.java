@@ -1,7 +1,8 @@
 package com.tibuhealth.Tibu.repository;
 
+import com.tibuhealth.Tibu.model.Order;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface Order extends JpaRepository<com.tibuhealth.Tibu.model.Order,Long> {
+public interface OrderRepository extends JpaRepository<Order,Long> {
     //Accepts all crud databases method
 }
