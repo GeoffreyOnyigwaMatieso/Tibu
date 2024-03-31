@@ -5,13 +5,17 @@ import jakarta.persistence.*;
 import java.util.Date;
 
 
+@Table(name = "Transaction")
 @Entity
 public class Transaction {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer transaction_id;
-    private Integer order_id;
+
+    @ManyToOne
+    @JoinColumn(name = "order_id", referencedColumnName = "order_id")
+    private Order order;
 
     @Column(name = "transaction_date")
     private Date transaction_date;

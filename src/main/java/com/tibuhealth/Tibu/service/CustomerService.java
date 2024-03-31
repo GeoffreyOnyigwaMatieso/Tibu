@@ -39,8 +39,9 @@ public class CustomerService {
     }
 
     // Add a Customer
-    public void addCustomer(Customer customer){
+    public Customer addCustomer(Customer customer){
         customerRepository.save(customer);
+        return customer;
     }
 
     /*
