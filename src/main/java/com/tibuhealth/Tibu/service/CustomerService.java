@@ -32,7 +32,7 @@ public class CustomerService {
         if (optionalCustomer.isPresent()){
             return Optional.of(optionalCustomer.get());
         }else {
-            //Handle the case where the topic with the given ID was not found
+            //Handle the case where the customer with the given ID was not found
             // here we could throw an exceptional or return null
             return null;
         }
