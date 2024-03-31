@@ -1,5 +1,6 @@
 package com.tibuhealth.Tibu.service;
 
+import com.tibuhealth.Tibu.exception.ResourceNotFoundException;
 import com.tibuhealth.Tibu.model.Customer;
 import com.tibuhealth.Tibu.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,13 +50,30 @@ public class CustomerService {
     if it matches update it
      */
 
-    // update a customer
-    public void updateCustomer(Customer customer){
-        customerRepository.save(customer);
+    // Update a customer by ID
+    public void updateCustomer(Long id, Customer updatedCustomer) {
+        // Retrieve the existing customer from the database by ID
+        Optional<Customer> optionalCustomer = customerRepository.findById(id);
+        if (optionalCustomer.isPresent()) {
+            // Get the existing customer
+            Customer existingCustomer = optionalCustomer.get();
+            // Update the properties of the existing customer with values from the updated customer
+            existingCustomer.setName(updatedCustomer.getName());
+            existingCustomer.setEmail(updatedCustomer.getEmail());
+            existingCustomer.setAddress(updatedCustomer.getAddress());
+            existingCustomer.setPhone_number(updatedCustomer.getPhone_number());
+            // Save the updated customer to the database
+            customerRepository.save(existingCustomer);
+        } else {
+            // Handle the case where the customer with the given ID was not found
+            throw new ResourceNotFoundException("Customer not found with id: " + id);
+        }
     }
 
-    public void deleteCustomer(Customer id){
+
+    public Customer deleteCustomer(Customer id){
         customerRepository.delete(id);
+        return id;
     }
 
 
