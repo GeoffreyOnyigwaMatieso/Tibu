@@ -11,26 +11,26 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController("/api/v1/customers")
+@RestController()
 public class CustomerController {
 
     @Autowired  //declares this as a dependency
     private CustomerService customerService;
 
 
-    @RequestMapping()
+    @RequestMapping("/api/v1/customers")
     public List<Customer> getAllCustomers() {
         return customerService.getAllCustomers();
     }
 
-    @PostMapping()
+    @PostMapping("/api/v1/customers")
     public Customer addCustomer(@RequestBody Customer customer) {
         return customerService.addCustomer(customer);
 
     }
 
     //build get customer by id REST API
-    @GetMapping("{id}")
+    @GetMapping("/api/v1/customers/{id}")
     public ResponseEntity<Customer> getCustomerById(@PathVariable long id) {
         Customer customer = customerService.getCustomer(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Customer does not exist with id:" + id));
