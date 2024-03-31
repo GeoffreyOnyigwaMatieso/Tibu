@@ -25,11 +25,11 @@ public class CustomerService {
     }
 
     //get a customer
-    public Customer getCustomer(Long id){
+    public Optional<Customer> getCustomer(Long id){
         Optional<Customer> optionalCustomer = customerRepository.findById(id);
         // Check if optional customer contains a value, and return it if present
         if (optionalCustomer.isPresent()){
-            return optionalCustomer.get();
+            return Optional.of(optionalCustomer.get());
         }else {
             //Handle the case where the topic with the given ID was not found
             // here we could throw an exceptional or return null
