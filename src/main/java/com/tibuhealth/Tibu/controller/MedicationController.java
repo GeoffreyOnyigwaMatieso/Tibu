@@ -17,7 +17,7 @@ public class MedicationController {
     @Autowired
     private MedicationService medicationService;
 
-    @RequestMapping("/api/v1/medication")
+    @RequestMapping("/api/v1/medications")
     public List<Medication> getAllMedication(){return medicationService.getAllMedication();}
 
     @PostMapping("/api/v1/medications")
@@ -25,8 +25,16 @@ public class MedicationController {
         return medicationService.addMedication(medication);
     }
 
+    @GetMapping("/api/v1/medications/{id}")
+    public ResponseEntity<Medication> getMedicationById(@PathVariable long id){
+        Medication medication = medicationService.getMedication(id)
+                .orElseThrow(()-> new ResourceNotFoundException("Medication does not exist with id:" + id));
+        return ResponseEntity.ok(medication);
+
+    }
+
     //build updated medication REST API
-    @PutMapping("{id}")
+    @PutMapping("/api/v1/medications/{id}")
     public ResponseEntity<Medication> updateMedication(@PathVariable long id, @RequestBody Medication medicationdetails){
         try{
             medicationService.updateMedication(id,medicationdetails);
@@ -38,7 +46,7 @@ public class MedicationController {
     }
 
     // build delete Medication REST API
-    @DeleteMapping("{id}")
+    @DeleteMapping("/api/v1/medications/{id}")
     public  ResponseEntity<HttpEntity> deletedMedication(@PathVariable Medication id){
         Medication medication = medicationService.deleteMedication(id);
         //delete medication details from the database

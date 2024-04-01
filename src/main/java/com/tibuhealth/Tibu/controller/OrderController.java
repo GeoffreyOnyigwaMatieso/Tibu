@@ -35,7 +35,7 @@ public class OrderController {
 
     // build update order REST API
 
-    @PutMapping("{id}")
+    @PutMapping("/api/v1/orders/{id}")
     public ResponseEntity<Order> updateOrder(@PathVariable long id, @RequestBody Order orderdetails){
         try {
             // call the updatedOrders method from the service class, passing the ID and updated order details
@@ -49,7 +49,7 @@ public class OrderController {
     }
 
     //build delete Order REST API
-    @DeleteMapping("{id}")
+    @DeleteMapping("/api/v1/orders/{id}")
     public ResponseEntity<HttpEntity> deletedOrder(@PathVariable Order id) {
         Order order = orderService.deleteOrder(id);
         // delete order details from the database

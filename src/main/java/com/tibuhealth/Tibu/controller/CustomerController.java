@@ -38,7 +38,7 @@ public class CustomerController {
     }
 
     //build update customer REST API
-    @PutMapping("{id}")
+    @PutMapping("/api/v1/customers/{id}")
     public ResponseEntity<Customer> updateCustomer(@PathVariable long id, @RequestBody Customer customerdetails) {
         try {
             //call the updatedCustomer method from the service class, passing the ID and updated customer details
@@ -53,7 +53,7 @@ public class CustomerController {
     }
 
     //build delete Customer REST API
-    @DeleteMapping("{id}")
+    @DeleteMapping("/api/v1/customers/{id}")
     public ResponseEntity<HttpEntity> deletedCustomer(@PathVariable Customer id) {
         Customer customer = customerService.deleteCustomer(id);
         //delete customer details frm the database

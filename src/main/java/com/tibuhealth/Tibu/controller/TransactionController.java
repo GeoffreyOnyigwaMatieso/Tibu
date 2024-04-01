@@ -26,7 +26,7 @@ public class TransactionController {
         return transactionService.addTransaction(transaction);
     }
 
-    @GetMapping("/api/v1/customers/{id}")
+    @GetMapping("/api/v1/transaction/{id}")
     public ResponseEntity<Transaction> getTransactionById(@PathVariable long id){
         Transaction transaction = transactionService.getTransaction(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Transaction does not exist with id:" + id));
@@ -34,7 +34,7 @@ public class TransactionController {
     }
 
     //build update transaction REST API
-    @PutMapping("{id}")
+    @PutMapping("/api/v1/transaction/{id}")
     public ResponseEntity<Transaction> updateTransaction(@PathVariable long id, @RequestBody Transaction transactiondetails){
         try {
             transactionService.updateTransaction(id,transactiondetails);
@@ -46,7 +46,7 @@ public class TransactionController {
         }
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/api/v1/transaction/{id}")
     public ResponseEntity<HttpEntity> deletedTransaction(@PathVariable Transaction id){
         Transaction transaction = transactionService.deleteTransaction(id);
         // delete transaction details frm the database
