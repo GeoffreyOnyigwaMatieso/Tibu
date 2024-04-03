@@ -17,7 +17,7 @@ public class OrderController {
     @Autowired // declares this as a dependency
     private OrderService orderService;
 
-    @RequestMapping("/api/v1/order")
+    @GetMapping("/api/v1/orders")
     public List<Order> getAllOrders(){return  orderService.getAllOrders();}
 
 

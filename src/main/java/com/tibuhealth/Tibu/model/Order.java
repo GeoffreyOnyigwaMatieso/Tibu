@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Date;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -22,7 +24,7 @@ public class Order {
     private Customer customer;
 
     @Column(name = "order_date")
-    private Integer order_date;
+    private Date order_date;
 
     @Column(name = "status")
     private String status;
